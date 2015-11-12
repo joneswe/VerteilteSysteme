@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.suppliers.model.Supplier" table="suppliers">
+      <meta attribute="class-description">
+         This class contains the supplier detail. 
+      </meta>
+      <id name="sno" type="string" column="sno">
+         <generator class="native"/>
+      </id>
+      <property name="sname" column="sname" type="string"/>
+      <property name="city" column="city" type="string"/>
+      <property name="status" column="status" type="int"/>
+   </class>
+</hibernate-mapping>
+
+
