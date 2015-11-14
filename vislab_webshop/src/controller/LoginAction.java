@@ -87,7 +87,7 @@ public class LoginAction extends ActionSupport {
     public void setPassword(String password) {
         this.password  = password;
     }
-
+//hi
 
     @Override
     public void validate() {
