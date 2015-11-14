@@ -22,7 +22,7 @@
         	<result>/pages/Login.jsp</result>
         </action>
         
-        <action name="User_login" class="vislabExample.controller.action.LoginAction">
+        <action name="User_login" class="vislabExample.controller.LoginAction">
             <result name="success">/pages/welcome.jsp</result>
             <result name="input">/pages/Login.jsp</result>
             <result name="registrieren">/pages/registration.jsp</result>
