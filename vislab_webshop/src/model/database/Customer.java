@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="CUSTOMER")
-public class Customer  implements java.io.Serializable {
+public class Customer implements java.io.Serializable {
 
 
 
@@ -19,7 +19,6 @@ public class Customer  implements java.io.Serializable {
 
     @Id
     @Column(name="username", nullable=false)
-
     private String username;
 
     @Column(name="firstname")
@@ -31,7 +30,7 @@ public class Customer  implements java.io.Serializable {
     @Column(name="password")
     private String password;
 
-    public Customer () {
+    public Customer() {
 
     }
 

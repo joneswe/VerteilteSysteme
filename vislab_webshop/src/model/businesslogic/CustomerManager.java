@@ -1,8 +1,8 @@
 package model.businesslogic;
 
 
-import org.hibernate.Session;
 import model.database.Customer;
+import org.hibernate.Session;
 import model.util.HibernateUtil;
 
 

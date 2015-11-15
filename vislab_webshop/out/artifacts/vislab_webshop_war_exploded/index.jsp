@@ -1,22 +1,30 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Tim
-  Date: 13.11.2015
-  Time: 16:32
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="s" uri="/struts-tags"  %>
+<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 
 <html>
 <head>
-
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Beispiel Login Seite</title>
+    <s:head/>
+    <sb:head/>
+    <link rel="stylesheet" href="../css/style.css" type="text/css" />
 </head>
-<body>
-Willkommen auf der Start-Seite des Beispielprojektes des VIS-Labors
+<body class="access">
+<div>
+    <p><s:text name="index.intro" /></p>
+</div>
 
-<p><a href="<s:url action="User_forward"/>">Zur Login-Seite</a> </p>
+<s:form action="login" theme="bootstrap" cssClass="well form-vertical" focusElement="username">
+    <s:textfield name="username" key="prompt.username" size="20" />
+    <s:password name="password" key="prompt.password" size="20" /><br>
+    <s:submit  name="buttonName" value="Login"/>
+</s:form>
+    <a href="<s:url action="registration" />"><s:text name="link.register" /></a>
+<div>
+    <s:actionerror theme="bootstrap" />
+</div>
 
 </body>
 </html>

@@ -18,5 +18,12 @@
     <s:property value="firstname"/></p>
 
 <p><s:text name="welcome.success"/>
+
+    <s:form action="searchItem">
+        <s:textfield name="titel" key="prompt.username" size="20" />
+        <s:textfield name="genre" key="prompt.password" size="20" />
+        <s:textfield  name="preis" value="Login" align="center"/>
+        <s:submit method="searchItem" align="center"/>
+    </s:form>
 </body>
 </html>

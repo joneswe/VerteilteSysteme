@@ -12,64 +12,54 @@ import model.database.Customer;
 public class LoginAction extends ActionSupport {
 
 
-    private static final long serialVersionUID = -983183915002226000L;
+    private String username;
+    private String password;
+    private String firstname;
+    private String lastname;
 
-    private String username = null;
-    private String password = null;
-    private String firstname = "";
-    private String lastname = "";
 
 
 
     public String execute() throws Exception {
 
-        /** Schnittstelle zur Businesslogic
-         * Verarbeitung der eingegebenen Daten, z.B. Überprüfen der Zugangsdaten, holen der Userdaten
-         */
+            CustomerManager customerManager = new CustomerManager();
 
-        CustomerManager customerManager = new CustomerManager();
+            Customer customer = customerManager.getCustomerByPrimaryKey(getUsername());
 
-        Customer customer = customerManager.getCustomerByPrimaryKey(getUsername());
+            if (customer == null) {
 
-        if (customer == null) {
-            customer = new Customer();
-
-            customer.setPassword(getPassword());
-            customer.setUsername(getUsername());
-            customerManager.saveCustomer(customer) ;
-
-            addActionError(getText("error.username.register"));
-            return "registrieren";
-        }
-        else {
-            if (customer.getPassword().equals(getPassword())) {
-                setFirstname(customer.getFirstname());
-                setLastname(customer.getLastname());
-                return SUCCESS;
-            }
-            else {
-                addActionError(getText("error.user.passwordforgotten"));
-                addActionError("Bitte geben Sie das richtige Passwort ein!");
+                addActionError(getText("error.username.register"));
                 return "input";
+            } else {
+                if (customer.getPassword().equals(getPassword())) {
+                    setFirstname(customer.getFirstname());
+                    setLastname(customer.getLastname());
+                    return "success";
+                } else {
+                    addActionError(getText("error.user.passwordforgotten"));
+                    //addActionError("Bitte geben Sie das richtige Passwort ein!");
+                    return "input";
+                }
             }
-        }
 
+
+    }
+
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    private void setLastname(String lastname) {
+    public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    private void setFirstname(String firstname) {
-        this.firstname = firstname;
     }
 
     public String getUsername() {
@@ -87,14 +77,14 @@ public class LoginAction extends ActionSupport {
     public void setPassword(String password) {
         this.password  = password;
     }
-//hi
 
-    @Override
-    public void validate() {
-        if (!this.username.startsWith("Us")){
-            addFieldError("username", "Username muss mit Us beginnen!");
-        }
-        super.validate();
-    }
+
+    //    @Override
+//    public void validate() {
+//        if (!this.username.startsWith("Us")){
+//            addFieldError("username", "Username muss mit Us beginnen!");
+//        }
+//        super.validate();
+//    }
 
 }
