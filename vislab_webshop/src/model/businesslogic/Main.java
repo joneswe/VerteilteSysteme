@@ -8,9 +8,8 @@ import model.database.Customer;
 public class Main {
 
     public static void main(String[] args) {
-        Customer cstm = new Customer("lebetyp", "peter", "ja", "ja");
-        CustomerManager mngr = new CustomerManager();
-        Customer customer = mngr.getCustomerByPrimaryKey("lebetyp");
+        GameManager mngr = new GameManager();
+        System.out.println(mngr.getGameList().get(0).toString());
 
 
     }

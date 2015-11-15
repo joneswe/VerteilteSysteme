@@ -1,5 +1,3 @@
-@CHARSET "UTF-8";
-
 html, body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
@@ -10,4 +8,10 @@ html, body {
 .access {
     margin: 30px auto;
     width: 800px;
+}
+
+.products {
+    float:left;
+    width: 100%;
+
 }

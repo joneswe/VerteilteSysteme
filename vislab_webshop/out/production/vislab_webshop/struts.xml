@@ -17,22 +17,26 @@
     <package name="vislabExample" extends="struts-default">
 
         <!-- Add your actions here  -->
-
-        <action name="login" class="controller.LoginAction">
-            <result name="success">/pages/welcome.jsp</result>
-            <result name="input">/index.jsp</result>
+        <action name="authentication">
+            <result>/index.jsp</result>
         </action>
 
         <action name="registration">
             <result>/pages/register.jsp</result>
         </action>
 
-        <action name="register" class="controller.RegistrationAction">
-            <result>/pages/register.jsp</result>
+        <action name="login" class="controller.LoginAction">
+            <result type="redirect">productList.action</result>
+            <result name="input">/index.jsp</result>
         </action>
 
-        <action name="searchItem" class="controller.ItemAction" method="searchItem">
-            <result name="success">/pages/welcome.jsp</result>
+        <action name="register" class="controller.RegistrationAction">
+            <result type="redirect">productList.action</result>
+            <result name="input">/pages/register.jsp</result>
+        </action>
+
+        <action name="productList" class="controller.ProductListAction">
+            <result>/pages/product_list.jsp</result>
         </action>
 
 

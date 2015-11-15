@@ -11,3 +11,9 @@ html, body {
     margin: 30px auto;
     width: 800px;
 }
+
+.products {
+    float:left;
+    width: 100%;
+
+}

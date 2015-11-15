@@ -5,27 +5,28 @@
 
 <html>
 <head>
-    <title><s:text name="welcome.title"/></title>
+    <title><s:text name="register.title"/></title>
     <s:head/>
     <sb:head/>
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
 </head>
 
 <body class="access">
-<%--<p><s:text name="registration.message"/></p>--%>
-<s:property value="username"/>
 
-<font color="red">
-    <s:actionerror label="label" />
-</font>
+<div>
+    <p><s:text name="register.intro" /></p>
+</div>
 
 <s:form action="register" theme="bootstrap" cssClass="well form-vertical" focusElement="username">
     <s:textfield name="username" key="prompt.username" size="20" />
     <s:password name="password" key="prompt.password" size="20" />
     <s:textfield name="firstname" key="prompt.firstname" size="20" />
     <s:textfield name="lastname" key="prompt.lastname" size="20" />
-    <s:submit value="register" align="center"/>
+    <s:actionerror/>
+    <s:submit cssClass="btn btn-primary" key="button.register"/>
 </s:form>
+
+<a href="<s:url action="authentication" />"><s:text name="link.login" /></a>
 
 </body>
 </html>

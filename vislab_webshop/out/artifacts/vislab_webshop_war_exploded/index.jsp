@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Beispiel Login Seite</title>
+    <title>Webshop login</title>
     <s:head/>
     <sb:head/>
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
@@ -19,12 +19,12 @@
 <s:form action="login" theme="bootstrap" cssClass="well form-vertical" focusElement="username">
     <s:textfield name="username" key="prompt.username" size="20" />
     <s:password name="password" key="prompt.password" size="20" /><br>
-    <s:submit  name="buttonName" value="Login"/>
+    <s:actionerror/>
+    <s:submit cssClass="btn btn-primary" value="Login"/>
+
 </s:form>
     <a href="<s:url action="registration" />"><s:text name="link.register" /></a>
-<div>
-    <s:actionerror theme="bootstrap" />
-</div>
+
 
 </body>
 </html>

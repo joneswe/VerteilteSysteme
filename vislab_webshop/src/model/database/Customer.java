@@ -13,10 +13,6 @@ import javax.persistence.Table;
 @Table(name="CUSTOMER")
 public class Customer implements java.io.Serializable {
 
-
-
-    private static final long serialVersionUID = 1L;
-
     @Id
     @Column(name="username", nullable=false)
     private String username;
@@ -31,11 +27,6 @@ public class Customer implements java.io.Serializable {
     private String password;
 
     public Customer() {
-
-    }
-
-    public Customer(String username) {
-        this.username = username;
     }
 
     public Customer(String username, String firstname, String lastname, String password) {
@@ -61,7 +52,6 @@ public class Customer implements java.io.Serializable {
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
-
 
     public String getLastname() {
         return this.lastname;

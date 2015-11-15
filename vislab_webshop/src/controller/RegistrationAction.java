@@ -20,7 +20,7 @@ public class RegistrationAction extends ActionSupport {
         Customer customer = customerManager.getCustomerByPrimaryKey(getUsername());
 
         if (customer != null) {
-            addActionError(getText("error.registration.username_exists"));
+            addActionError(getText("error.register.username_exists"));
             return "input";
         } else {
             customer = new Customer();
@@ -64,5 +64,21 @@ public class RegistrationAction extends ActionSupport {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public void validate() {
+        if (getUsername().length() == 0) {
+            addFieldError("username", getText("error.login.username_blank"));
+        }
+        if (getPassword().length() == 0) {
+            addFieldError("password", getText("error.login.password_blank"));
+        }
+        if (getFirstname().length() == 0) {
+            addFieldError("firstname", getText("error.register.firstname_blank"));
+        }
+        if (getLastname().length() == 0) {
+            addFieldError("lastname", getText("error.register.lastname_blank"));
+        }
     }
 }

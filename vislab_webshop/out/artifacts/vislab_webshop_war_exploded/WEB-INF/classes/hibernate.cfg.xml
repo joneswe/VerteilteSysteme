@@ -21,6 +21,8 @@
     <property name="hibernate.current_session_context_class">
       thread
     </property>
+    <mapping class="model.database.Game"></mapping>
+    <mapping class="model.database.Customer"></mapping>
   </session-factory>
 </hibernate-configuration>
 

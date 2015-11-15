@@ -79,12 +79,14 @@ public class LoginAction extends ActionSupport {
     }
 
 
-    //    @Override
-//    public void validate() {
-//        if (!this.username.startsWith("Us")){
-//            addFieldError("username", "Username muss mit Us beginnen!");
-//        }
-//        super.validate();
-//    }
+    @Override
+    public void validate() {
+            if (getUsername().length() == 0) {
+                addFieldError("username", getText("error.login.username_blank"));
+            }
+            if (getPassword().length() == 0) {
+                addFieldError("password", getText("error.login.password_blank"));
+            }
+    }
 
 }
