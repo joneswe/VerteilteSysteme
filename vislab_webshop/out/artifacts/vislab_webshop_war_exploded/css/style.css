@@ -15,6 +15,23 @@ html, body {
     float: left;
 }
 
+.admin-category-editor {
+    width: 450px;
+    float: left;
+}
+
+#admin_categories select{
+    width: 100px;
+    display:inline;
+}
+
+#admin_categories_button_addCategory{
+    margin-left: 10px;
+}
+
+#admin_categories > fieldset > div{
+    display:inline-block;
+}
 
 .products {
     float: right;
@@ -30,3 +47,6 @@ html, body {
     width: 50px;
 }
 
+#admin_categories > fieldset > input[type="text"]:nth-child(4){
+    margin-right: 5px;
+}

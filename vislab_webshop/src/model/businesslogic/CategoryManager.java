@@ -14,9 +14,9 @@ public class CategoryManager {
 
     public List<String> getCategoryList(){
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        String hql ="from Category C ORDER BY C.name ASC";
 
+        String hql ="from Category C ORDER BY C.name ASC";
+        session.beginTransaction();
         List<Category> categories = session.createQuery(hql).list();
         session.getTransaction().commit();
 
@@ -26,5 +26,21 @@ public class CategoryManager {
         }
 
         return categoryList;
+    }
+
+    public void saveCategory(String name){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Category category = new Category(name);
+        session.beginTransaction();
+        session.save(category);
+        session.getTransaction().commit();
+    }
+
+    public void deleteCategoryById(String id){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Category category = (Category)session.load(Category.class,id);
+        session.delete(category);
+        session.getTransaction().commit();
     }
 }

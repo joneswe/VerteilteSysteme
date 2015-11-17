@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Created by Tim on 16.11.2015.
  */
-public class ProductListFilterAction extends ActionSupport {
+public class ProductListSearchAction extends ActionSupport {
 
     private int priceMin = 0;
     private int priceMax = 0;

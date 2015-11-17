@@ -30,6 +30,10 @@
             <result name="input">/index.jsp</result>
         </action>
 
+        <action name="logout">
+            <result>/index.jsp</result>
+        </action>
+
         <action name="register" class="controller.RegistrationAction">
             <result type="redirect">productList.action</result>
             <result name="input">/pages/register.jsp</result>
@@ -39,12 +43,31 @@
             <result>/pages/product_list.jsp</result>
         </action>
 
-        <action name="productSearch" class="controller.ProductListFilterAction">
+        <action name="productSearch" class="controller.ProductListSearchAction">
             <result name="success">/pages/product_list.jsp</result>
             <result name="input">/pages/product_list.jsp</result>
         </action>
 
+        <action name="admin_forward">
+            <result type="redirect">admin_panel.action</result>
+        </action>
 
+        <action name="admin_panel" class="controller.AdminAction">
+            <result>/pages/admin.jsp</result>
+        </action>
+
+        <action name="admin_categories" class="controller.CategoryAction">
+            <result name="success">/pages/admin.jsp</result>
+            <result name="input">/pages/admin.jsp</result>
+        </action>
+
+        <action name="admin_categories_edit" class="controller.CategoryEditAction">
+            <result name="success">/pages/admin_category.jsp</result>
+        </action>
+
+        <!--<action name="category_post" class="controller.CategoryPostAction">-->
+            <!--<result name="success"> /pages/admin.jsp</result>-->
+        <!--</action>-->
 
     </package>
 

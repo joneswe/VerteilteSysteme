@@ -14,8 +14,8 @@ import java.util.Map;
 public class ProductListAction extends ActionSupport {
 
     private Map<Integer, Game> gamesList;
-    private String firstname ="hi";
-    private String lastname="ne";
+    private String firstname ="test";
+    private String lastname="test";
     private List<String> categoryList;
 
     public String execute() throws Exception {
