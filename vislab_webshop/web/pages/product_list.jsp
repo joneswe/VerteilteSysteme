@@ -14,20 +14,36 @@
 <body class="container">
 
 
-<h2><s:text name="product.welcome"/>
+<h2>
+    <s:text name="product.welcome"/>
     <s:property value="firstname"/>
     <s:property value="lastname" />
 </h2>
 
+
+
+<div class="filter">
+    <s:form action="productSearch" theme="bootstrap" cssClass="well form-vertical">
+        <label><s:text name="product.text_search" /></label><br><input type="text" name="textSearch" /><br><br>
+        <s:checkboxlist key="product.genre" list="categoryList" name="categoryFilter"/>
+        <label><s:text name="product.age_range" /></label><br>
+        <s:checkbox key="product.usk" name="adult"/>
+        <label><s:text name="product.price_range" /></label><br>
+        <input class="small-input" type="text" name="priceMin" />-<input class="small-input" type="text" name="priceMax" /><br><br>
+
+        <s:submit cssClass="btn btn-primary" key="button.search" />
+    </s:form>
+</div>
 <div class="products">
     <ul class="list-group">
         <s:iterator value="gamesList">
             <li class="list-group-item">
-                    <s:property value="title" />
+                    <s:property value="value.title" />
             </li>
         </s:iterator>
     </ul>
 </div>
+
 
 
 </body>

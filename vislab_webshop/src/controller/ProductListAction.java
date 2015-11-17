@@ -1,35 +1,40 @@
 package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
+import model.businesslogic.CategoryManager;
 import model.businesslogic.GameManager;
 import model.database.Game;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Tim on 15.11.2015.
  */
 public class ProductListAction extends ActionSupport {
 
-    private List<Game> gamesList;
+    private Map<Integer, Game> gamesList;
     private String firstname ="hi";
     private String lastname="ne";
+    private List<String> categoryList;
 
     public String execute() throws Exception {
+        CategoryManager categoryManager = new CategoryManager();
+        setCategoryList(categoryManager.getCategoryList());
 
         GameManager gameManager = new GameManager();
-        this.gamesList = gameManager.getGameList();
+        setGamesList(gameManager.getGamesList());
 
-        System.out.println(this.gamesList);
+
 
         return SUCCESS;
     }
 
-    public List<Game> getGamesList() {
+    public Map<Integer, Game> getGamesList() {
         return gamesList;
     }
 
-    public void setGamesList(List<Game> gamesList) {
+    public void setGamesList(Map<Integer, Game> gamesList) {
         this.gamesList = gamesList;
     }
 
@@ -47,5 +52,13 @@ public class ProductListAction extends ActionSupport {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public List<String> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<String> categoryList) {
+        this.categoryList = categoryList;
     }
 }

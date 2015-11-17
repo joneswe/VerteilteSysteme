@@ -9,35 +9,40 @@ import javax.persistence.*;
 @Table(name="GAME")
 public class Game implements java.io.Serializable{
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private int id;
 
     @Column(name="title")
     private String title;
 
-    @Column(name="genre")
-    private String genre;
+    @ManyToOne
+    @JoinColumn(name="category")
+    private Category category;
 
     @Column(name="price")
     private double price;
 
-    @Column(name="publisher")
-    private String publisher;
+    @Column(name="isAdult")
+    private boolean isAdult;
 
-    @Column(name="system")
-    private String system;
+    @Column(name="description")
+    private String description;
+
+    @Column(name="url")
+    private String url;
 
     public Game(){
 
     }
 
-    public Game(String title, String genre, double price, String publisher, String system) {
+    public Game(String title, Category category, double price, boolean isAdult, String description, String url) {
         this.title = title;
-        this.genre = genre;
+        this.category = category;
         this.price = price;
-        this.publisher = publisher;
-        this.system = system;
+        this.isAdult = isAdult;
+        this.description = description;
+        this.url = url;
     }
 
     public int getId() {
@@ -47,6 +52,7 @@ public class Game implements java.io.Serializable{
     public void setId(int id) {
         this.id = id;
     }
+
     public String getTitle() {
         return title;
     }
@@ -55,12 +61,12 @@ public class Game implements java.io.Serializable{
         this.title = title;
     }
 
-    public String getGenre() {
-        return genre;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public double getPrice() {
@@ -71,24 +77,32 @@ public class Game implements java.io.Serializable{
         this.price = price;
     }
 
-    public String getPublisher() {
-        return publisher;
+    public boolean isAdult() {
+        return isAdult;
     }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
+    public void setAdult(boolean adult) {
+        isAdult = adult;
     }
 
-    public String getSystem() {
-        return system;
+    public String getDescription() {
+        return description;
     }
 
-    public void setSystem(String system) {
-        this.system = system;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
     public String toString() {
-        return "{" + this.title + ", " + this.genre + ", " + this.publisher + ", " + this.price + "}";
+        return "{" + this.title + ", " + this.category.getName() + ", " + this.price + "}";
     }
 }

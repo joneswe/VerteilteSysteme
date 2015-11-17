@@ -10,8 +10,23 @@ html, body {
     width: 800px;
 }
 
-.products {
-    float:left;
-    width: 100%;
-
+.filter {
+    width: 300px;
+    float: left;
 }
+
+
+.products {
+    float: right;
+    margin-left: 20px;
+    width:700px;
+}
+
+#productSearch fieldset input[type="text"] {
+    margin: 4px;
+}
+
+#productSearch .small-input {
+    width: 50px;
+}
+

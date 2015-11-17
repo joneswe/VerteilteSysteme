@@ -1,5 +1,6 @@
 package model.util;
 
+import model.database.Category;
 import model.database.Customer;
 import model.database.Game;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -21,6 +22,7 @@ public class HibernateUtil {
             //add Annotated Classes
             configuration.addAnnotatedClass(Customer.class);
             configuration.addAnnotatedClass(Game.class);
+            configuration.addAnnotatedClass(Category.class);
             StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
             sessionFactory = configuration.buildSessionFactory(builder.build());
             System.out.println("Initial SessionFactory creation");

@@ -39,6 +39,11 @@
             <result>/pages/product_list.jsp</result>
         </action>
 
+        <action name="productSearch" class="controller.ProductListFilterAction">
+            <result name="success">/pages/product_list.jsp</result>
+            <result name="input">/pages/product_list.jsp</result>
+        </action>
+
 
 
     </package>
