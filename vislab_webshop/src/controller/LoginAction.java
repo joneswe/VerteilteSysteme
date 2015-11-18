@@ -3,13 +3,16 @@ package controller;
 import com.opensymphony.xwork2.ActionSupport;
 import model.businesslogic.CustomerManager;
 import model.database.Customer;
+import org.apache.struts2.interceptor.SessionAware;
+
+import java.util.Map;
 
 /**
  * Created by Tim on 13.11.2015.
  */
 
 
-public class LoginAction extends ActionSupport {
+public class LoginAction extends ActionSupport implements SessionAware {
 
 
     private String username;
@@ -17,7 +20,7 @@ public class LoginAction extends ActionSupport {
     private String firstname;
     private String lastname;
 
-
+    private Map<String, Object> session;
 
 
     public String execute() throws Exception {
@@ -34,10 +37,10 @@ public class LoginAction extends ActionSupport {
                 if (customer.getPassword().equals(getPassword())) {
                     setFirstname(customer.getFirstname());
                     setLastname(customer.getLastname());
+                    session.put("user", customer);
                     return "success";
                 } else {
                     addActionError(getText("error.user.passwordforgotten"));
-                    //addActionError("Bitte geben Sie das richtige Passwort ein!");
                     return "input";
                 }
             }
@@ -89,4 +92,8 @@ public class LoginAction extends ActionSupport {
             }
     }
 
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
+    }
 }

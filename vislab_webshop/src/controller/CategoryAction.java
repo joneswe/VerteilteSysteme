@@ -41,6 +41,9 @@ public class CategoryAction extends ActionSupport implements SessionAware {
 
             addActionMessage(getText("admin.category_deleted"));
         }
+        if ("Bearbeiten".equals(buttonName)) {
+            return "edit";
+        }
 
         return "success";
     }
@@ -49,7 +52,6 @@ public class CategoryAction extends ActionSupport implements SessionAware {
     public void validate() {
         CategoryManager categoryManager = new CategoryManager();
         setCategoryList(categoryManager.getCategoryList());
-        System.out.println(categoryName);
     }
 
     public List<String> getCategoryList() {
@@ -87,5 +89,9 @@ public class CategoryAction extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map<String, Object> session) {
         this.session = session;
+    }
+
+    public String edit() throws Exception {
+        return "success";
     }
 }

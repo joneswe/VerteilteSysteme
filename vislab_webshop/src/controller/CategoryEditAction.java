@@ -1,21 +1,33 @@
 package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
+import model.businesslogic.CategoryManager;
+import org.apache.struts2.interceptor.SessionAware;
+
+import java.util.Map;
 
 /**
  * Created by Tim on 17.11.2015.
  */
-public class CategoryEditAction extends ActionSupport {
+public class CategoryEditAction extends ActionSupport implements SessionAware {
 
-    String selectedCategory;
     String categoryName;
+    String newCategoryName;
+    private Map<String, Object> session;
 
     public String execute(){
-        System.out.println(categoryName);
-        System.out.println(selectedCategory);
+        session.put("cat", categoryName);
 
         return "success";
     }
+
+    public String saveNewCat(){
+        session.put("newCat", newCategoryName);
+
+        return "success";
+    }
+
+
 
     public String getCategoryName() {
         return categoryName;
@@ -25,11 +37,16 @@ public class CategoryEditAction extends ActionSupport {
         this.categoryName = categoryName;
     }
 
-    public String getSelectedCategory() {
-        return selectedCategory;
+    public String getNewCategoryName() {
+        return newCategoryName;
     }
 
-    public void setSelectedCategory(String selectedCategory) {
-        this.selectedCategory = selectedCategory;
+    public void setNewCategoryName(String newCategoryName) {
+        this.newCategoryName = newCategoryName;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.session = map;
     }
 }

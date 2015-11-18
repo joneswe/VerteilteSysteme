@@ -25,20 +25,42 @@ public class GameManager {
         for(Game game: games){
             gamesList.put(game.getId(), game);
         }
-
-
        return gamesList;
     }
 
-    public Game getGameByPrimaryKey(String primaryKey){
+    public Game getGameById(String id){
+        int idInt = Integer.valueOf(id);
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
         session.beginTransaction();
-        String hql="from Game G WHERE G.title ='Battlefront'";
-        List<Game> list = session.createQuery(hql).list();
-
-
+        Game game = session.get(Game.class, idInt);
         session.getTransaction().commit();
-        return list.get(0);
+        return game;
+    }
+
+    public Game getGameById(int id){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+
+        session.beginTransaction();
+        Game game = session.get(Game.class, id);
+        session.getTransaction().commit();
+        return game;
+    }
+
+    public void deleteGameById(String id){
+        int idInt = Integer.valueOf(id);
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Game game = session.load(Game.class,idInt);
+        session.delete(game);
+        session.getTransaction().commit();
+    }
+
+    public void updateGame(Game game){
+
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        session.saveOrUpdate(game);
+        session.getTransaction().commit();
     }
 }

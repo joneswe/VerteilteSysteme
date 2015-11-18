@@ -26,14 +26,18 @@ public class Customer implements java.io.Serializable {
     @Column(name="password")
     private String password;
 
+    @Column(name="isAdmin")
+    private boolean isAdmin;
+
     public Customer() {
     }
 
-    public Customer(String username, String firstname, String lastname, String password) {
+    public Customer(String username, String firstname, String lastname, String password, boolean isAdmin) {
         this.username = username;
         this.firstname = firstname;
         this.lastname = lastname;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
 
     public String getUsername() {
@@ -70,5 +74,11 @@ public class Customer implements java.io.Serializable {
         this.password = password;
     }
 
+    public boolean isAdmin() {
+        return isAdmin;
+    }
 
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 }

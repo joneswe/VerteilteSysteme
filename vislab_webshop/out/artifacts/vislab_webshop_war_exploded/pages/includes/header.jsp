@@ -7,7 +7,9 @@
         <a class="navbar-brand" href="<s:url action="productList" />"></a>
         <ul class="nav navbar-nav navbar-right">
             <li>
+                <s:if test="isAdmin()">
                     <a href="<s:url action="admin_forward" />"><s:text name="link.admin" /></a>
+                </s:if>
             </li>
             <li>
                 <a href="<s:url action="logout" />"><s:text name="link.logout" /></a>

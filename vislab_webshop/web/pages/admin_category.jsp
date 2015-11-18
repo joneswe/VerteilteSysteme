@@ -14,12 +14,13 @@
 <body class="access">
 <%@include file="includes/header.jsp" %>
 
-<s:textfield size="20" name="categoryName"  value="%{categoryName}"/><br>
-<%--<s:form action="category_post?selectedCategory=%{categoryName}" theme="bootstrap" cssClass="well form-vertical" focusElement="username">--%>
-    <%----%>
-    <%--<s:actionerror/>--%>
-    <%--<s:submit cssClass="btn btn-primary" value="Aktualisieren"/>--%>
 
-<%--</s:form>--%>
+<s:form action="category_post" theme="bootstrap" cssClass="well form-vertical">
+    <label>Kategorie ändern</label><br><br>
+    <s:textfield size="20" name="newCategoryName"  value="%{categoryName}"/><br>
+    <s:actionerror/>
+    <s:submit cssClass="btn btn-primary" value="Aktualisieren"/>
+
+</s:form>
 </body>
 </html>

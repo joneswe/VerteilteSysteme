@@ -3,7 +3,9 @@ package controller;
 import com.opensymphony.xwork2.ActionSupport;
 import model.businesslogic.CategoryManager;
 import model.businesslogic.GameManager;
+import model.database.Customer;
 import model.database.Game;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -13,13 +15,17 @@ import java.util.Map;
 /**
  * Created by Tim on 16.11.2015.
  */
-public class ProductListSearchAction extends ActionSupport {
+public class ProductListSearchAction extends ActionSupport implements SessionAware {
 
     private int priceMin = 0;
     private int priceMax = 0;
     private String categoryFilter = null;
     private String textSearch = null;
     private boolean isAdult;
+    private String firstname;
+    private String lastname;
+    private boolean isAdmin;
+    private Map<String, Object> session;
 
     private Map<Integer, Game> gamesList;
     private List<String> categoryList;
@@ -37,6 +43,11 @@ public class ProductListSearchAction extends ActionSupport {
 
     @Override
     public void validate() {
+        Customer customer = ((Customer)session.get("user"));
+        firstname = customer.getFirstname();
+        lastname = customer.getLastname();
+        isAdmin = customer.isAdmin();
+
         CategoryManager categoryManager = new CategoryManager();
         setCategoryList(categoryManager.getCategoryList());
 
@@ -151,5 +162,34 @@ public class ProductListSearchAction extends ActionSupport {
 
     public void setGamesList(Map<Integer, Game> gamesList) {
         this.gamesList = gamesList;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
     }
 }

@@ -21,7 +21,7 @@ public class Game implements java.io.Serializable{
     private Category category;
 
     @Column(name="price")
-    private double price;
+    private int price;
 
     @Column(name="isAdult")
     private boolean isAdult;
@@ -36,7 +36,7 @@ public class Game implements java.io.Serializable{
 
     }
 
-    public Game(String title, Category category, double price, boolean isAdult, String description, String url) {
+    public Game(String title, Category category, int price, boolean isAdult, String description, String url) {
         this.title = title;
         this.category = category;
         this.price = price;
@@ -69,11 +69,11 @@ public class Game implements java.io.Serializable{
         this.category = category;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -103,6 +103,6 @@ public class Game implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "{" + this.title + ", " + this.category.getName() + ", " + this.price + "}";
+        return "{" + this.title + ", " + this.price + "}";
     }
 }

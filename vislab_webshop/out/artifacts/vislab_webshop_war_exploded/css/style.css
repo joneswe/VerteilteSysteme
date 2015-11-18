@@ -17,19 +17,31 @@ html, body {
 
 .admin-category-editor {
     width: 450px;
-    float: left;
 }
 
 #admin_categories select{
-    width: 100px;
+    width: 200px;
     display:inline;
 }
 
-#admin_categories_button_addCategory{
+#admin_games select{
+    width: 200px;
+    display:inline;
+}
+
+#admin_categories input[type="submit"]{
+    margin-left: 10px;
+}
+
+#admin_games input[type="submit"]{
     margin-left: 10px;
 }
 
 #admin_categories > fieldset > div{
+    display:inline-block;
+}
+
+#admin_games > fieldset > div{
     display:inline-block;
 }
 
@@ -48,5 +60,9 @@ html, body {
 }
 
 #admin_categories > fieldset > input[type="text"]:nth-child(4){
+    margin-right: 5px;
+}
+
+#admin_games > fieldset > input[type="text"]:nth-child(4){
     margin-right: 5px;
 }

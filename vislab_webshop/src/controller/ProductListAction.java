@@ -3,7 +3,9 @@ package controller;
 import com.opensymphony.xwork2.ActionSupport;
 import model.businesslogic.CategoryManager;
 import model.businesslogic.GameManager;
+import model.database.Customer;
 import model.database.Game;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.List;
 import java.util.Map;
@@ -11,12 +13,15 @@ import java.util.Map;
 /**
  * Created by Tim on 15.11.2015.
  */
-public class ProductListAction extends ActionSupport {
+public class ProductListAction extends ActionSupport implements SessionAware {
 
     private Map<Integer, Game> gamesList;
-    private String firstname ="test";
-    private String lastname="test";
+    private String firstname;
+    private String lastname;
+    private boolean isAdmin;
     private List<String> categoryList;
+
+    private Map<String, Object> session;
 
     public String execute() throws Exception {
         CategoryManager categoryManager = new CategoryManager();
@@ -25,6 +30,10 @@ public class ProductListAction extends ActionSupport {
         GameManager gameManager = new GameManager();
         setGamesList(gameManager.getGamesList());
 
+        Customer customer = ((Customer)session.get("user"));
+        firstname = customer.getFirstname();
+        lastname = customer.getLastname();
+        isAdmin = customer.isAdmin();
 
 
         return SUCCESS;
@@ -60,5 +69,18 @@ public class ProductListAction extends ActionSupport {
 
     public void setCategoryList(List<String> categoryList) {
         this.categoryList = categoryList;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
     }
 }

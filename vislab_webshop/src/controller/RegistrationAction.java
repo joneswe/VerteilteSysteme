@@ -3,16 +3,21 @@ package controller;
 import com.opensymphony.xwork2.ActionSupport;
 import model.businesslogic.CustomerManager;
 import model.database.Customer;
+import org.apache.struts2.interceptor.SessionAware;
+
+import java.util.Map;
 
 /**
  * Created by Tim on 15.11.2015.
  */
-public class RegistrationAction extends ActionSupport {
+public class RegistrationAction extends ActionSupport implements SessionAware {
 
     private String username;
     private String firstname;
     private String lastname;
     private String password;
+
+    private Map<String, Object> session;
 
     public String execute() throws Exception {
 
@@ -29,6 +34,7 @@ public class RegistrationAction extends ActionSupport {
             customer.setLastname(getLastname());
             customer.setPassword(getPassword());
             customerManager.saveCustomer(customer);
+            session.put("user", customer);
             return "success";
         }
     }
@@ -80,5 +86,10 @@ public class RegistrationAction extends ActionSupport {
         if (getLastname().length() == 0) {
             addFieldError("lastname", getText("error.register.lastname_blank"));
         }
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
     }
 }

@@ -2,6 +2,7 @@ package model.businesslogic;
 
 import model.database.Category;
 import model.util.HibernateUtil;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.util.ArrayList;
@@ -41,6 +42,17 @@ public class CategoryManager {
         session.beginTransaction();
         Category category = (Category)session.load(Category.class,id);
         session.delete(category);
+        session.getTransaction().commit();
+    }
+
+    public void updateCategory(String id, String newId){
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        String hql="update Category C set name = :newId where name = :id ";
+        session.beginTransaction();
+        Query query = session.createQuery(hql);
+        query.setString("newId", newId);
+        query.setString("id", id);
+        query.executeUpdate();
         session.getTransaction().commit();
     }
 }
