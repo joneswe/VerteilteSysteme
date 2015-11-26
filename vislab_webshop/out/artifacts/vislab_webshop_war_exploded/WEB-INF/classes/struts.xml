@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="false"/>
+    <constant name="struts.custom.i18n.resources" value="ApplicationResources"/>
+
+
+    <!-- Add packages here -->
+
+    <package name="webshop" extends="struts-default">
+
+        <global-results>
+            <result name="login">authentication.action</result>
+        </global-results>
+
+        <!-- Add your actions here  -->
+        <action name="authentication">
+            <result>/index.jsp</result>
+        </action>
+
+        <action name="registration">
+            <result>/pages/register.jsp</result>
+        </action>
+
+        <action name="login" class="controller.LoginAction">
+            <result type="redirect">productList.action</result>
+            <result name="input">/index.jsp</result>
+        </action>
+
+        <action name="logout">
+            <result>/index.jsp</result>
+        </action>
+
+        <action name="register" class="controller.RegistrationAction">
+            <result type="redirect">productList.action</result>
+            <result name="input">/pages/register.jsp</result>
+        </action>
+
+        <action name="productList" class="controller.ProductListAction">
+            <result>/pages/product_list.jsp</result>
+        </action>
+
+        <action name="productSearch" class="controller.ProductListSearchAction">
+            <result name="success">/pages/product_list.jsp</result>
+            <result name="input">/pages/product_list.jsp</result>
+        </action>
+
+        <action name="productDetail" class="controller.DetailAction">
+            <result>/pages/product_details.jsp</result>
+        </action>
+
+        <action name="admin_forward">
+            <result type="redirect">admin_panel_categories.action</result>
+        </action>
+
+        <action name="admin_forward_games">
+            <result type="redirect">admin_panel_games.action</result>
+        </action>
+
+        <action name="admin_panel_categories" class="controller.AdminCategoriesAction">
+            <result>/pages/admin_panel_categories.jsp</result>
+        </action>
+
+        <action name="admin_panel_games" class="controller.AdminGamesAction">
+            <result>/pages/admin_panel_games.jsp</result>
+        </action>
+
+        <action name="admin_categories" class="controller.CategoryAction">
+            <result name="success">/pages/admin_panel_categories.jsp</result>
+            <result name="input">/pages/admin_panel_categories.jsp</result>
+            <result name="edit" type="redirectAction">
+                <param name="actionName">admin_categories_edit</param>
+                <param name="categoryName">%{categoryName}</param>
+            </result>
+        </action>
+
+        <action name="admin_categories_edit" class="controller.CategoryEditAction">
+            <result name="success">/pages/admin_category.jsp</result>
+        </action>
+
+        <action name="category_post" class="controller.CategoryEditAction" method="saveNewCat">
+            <result type="redirect">category_submit.action</result>
+        </action>
+
+        <action name="category_submit" class="controller.CategoryPostAction">
+            <result type="redirect">admin_panel_categories.action</result>
+        </action>
+
+        <action name="admin_games" class="controller.GameAction">
+            <result name="success">/pages/admin_panel_games.jsp</result>
+            <result name="input">/pages/admin_panel_games.jsp</result>
+            <result name="add" type="redirect">admin_games_save.action</result>
+            <result name="edit" type="redirectAction">
+                <param name="actionName">admin_games_edit</param>
+                <param name="id">%{id}</param>
+            </result>
+        </action>
+
+        <action name="admin_games_edit" class="controller.GameEditAction">
+            <result name="success">/pages/admin_game.jsp</result>
+            <result name="input">/pages/admin_game.jsp</result>
+        </action>
+
+        <action name="game_post" class="controller.GameEditAction" method="editGame">
+            <result name="success" type="redirect">admin_forward_games.action</result>
+            <result name="input" type="redirect">admin_forward_games.action</result>
+        </action>
+
+        <action name="admin_games_save" class="controller.GameSaveAction">
+            <result name="success">/pages/admin_game.jsp</result>
+            <result name="input">/pages/admin_game.jsp</result>
+        </action>
+
+    </package>
+
+</struts>
