@@ -14,7 +14,6 @@ import java.util.Map;
 
 public class LoginAction extends ActionSupport implements SessionAware {
 
-
     private String username;
     private String password;
     private String firstname;
@@ -25,25 +24,25 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
     public String execute() throws Exception {
 
-            CustomerManager customerManager = new CustomerManager();
+        CustomerManager customerManager = new CustomerManager();
+        Customer customer = customerManager.getCustomerByPrimaryKey(getUsername());
 
-            Customer customer = customerManager.getCustomerByPrimaryKey(getUsername());
-
-            if (customer == null) {
-
-                addActionError(getText("error.username.register"));
-                return "input";
+        //check, if user is registrated
+        if (customer == null) {
+            addActionError(getText("error.username.register"));
+            return "input";
+        } else {
+            //if user is registrated, compare input with password in database and put user in current session
+            if (customer.getPassword().equals(getPassword())) {
+                setFirstname(customer.getFirstname());
+                setLastname(customer.getLastname());
+                session.put("user", customer);
+                return "success";
             } else {
-                if (customer.getPassword().equals(getPassword())) {
-                    setFirstname(customer.getFirstname());
-                    setLastname(customer.getLastname());
-                    session.put("user", customer);
-                    return "success";
-                } else {
-                    addActionError(getText("error.user.passwordforgotten"));
-                    return "input";
-                }
+                addActionError(getText("error.user.passwordforgotten"));
+                return "input";
             }
+        }
 
 
     }
@@ -78,18 +77,18 @@ public class LoginAction extends ActionSupport implements SessionAware {
     }
 
     public void setPassword(String password) {
-        this.password  = password;
+        this.password = password;
     }
 
 
     @Override
     public void validate() {
-            if (getUsername().length() == 0) {
-                addFieldError("username", getText("error.login.username_blank"));
-            }
-            if (getPassword().length() == 0) {
-                addFieldError("password", getText("error.login.password_blank"));
-            }
+        if (getUsername().length() == 0) {
+            addFieldError("username", getText("error.login.username_blank"));
+        }
+        if (getPassword().length() == 0) {
+            addFieldError("password", getText("error.login.password_blank"));
+        }
     }
 
     @Override

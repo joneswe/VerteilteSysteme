@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by Tim on 18.11.2015.
  */
-public class GameSaveAction extends ActionSupport implements SessionAware  {
+public class GameSaveAction extends ActionSupport implements SessionAware {
     private Game game;
     private List<String> categoryList;
     private String categoryName;
@@ -20,11 +20,11 @@ public class GameSaveAction extends ActionSupport implements SessionAware  {
     private Map<String, Object> session;
 
 
-    public String execute(){
+    public String execute() {
 
+        //update the categoryList
         CategoryManager categoryManager = new CategoryManager();
         categoryList = categoryManager.getCategoryList();
-
 
 
         return "success";

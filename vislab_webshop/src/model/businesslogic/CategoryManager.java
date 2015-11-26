@@ -13,10 +13,10 @@ import java.util.List;
  */
 public class CategoryManager {
 
-    public List<String> getCategoryList(){
+    public List<String> getCategoryList() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
-        String hql ="from Category C ORDER BY C.name ASC";
+        String hql = "from Category C ORDER BY C.name ASC";
         session.beginTransaction();
         List<Category> categories = session.createQuery(hql).list();
         session.getTransaction().commit();
@@ -29,7 +29,7 @@ public class CategoryManager {
         return categoryList;
     }
 
-    public void saveCategory(String name){
+    public void saveCategory(String name) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         Category category = new Category(name);
         session.beginTransaction();
@@ -37,17 +37,17 @@ public class CategoryManager {
         session.getTransaction().commit();
     }
 
-    public void deleteCategoryById(String id){
+    public void deleteCategoryById(String id) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Category category = (Category)session.load(Category.class,id);
+        Category category = (Category) session.load(Category.class, id);
         session.delete(category);
         session.getTransaction().commit();
     }
 
-    public void updateCategory(String id, String newId){
+    public void updateCategory(String id, String newId) {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        String hql="update Category C set name = :newId where name = :id ";
+        String hql = "update Category C set name = :newId where name = :id ";
         session.beginTransaction();
         Query query = session.createQuery(hql);
         query.setString("newId", newId);

@@ -15,18 +15,19 @@ public class CategoryEditAction extends ActionSupport implements SessionAware {
     String newCategoryName;
     private Map<String, Object> session;
 
-    public String execute(){
+    public String execute() {
+        //save category that will be changed to access it from next action
         session.put("cat", categoryName);
 
         return "success";
     }
 
-    public String saveNewCat(){
+    public String saveNewCat() {
+        //save new category name to access it from next action
         session.put("newCat", newCategoryName);
 
         return "success";
     }
-
 
 
     public String getCategoryName() {

@@ -6,33 +6,34 @@ import javax.persistence.*;
  * Created by Tim on 14.11.2015.
  */
 @Entity
-@Table(name="GAME")
-public class Game implements java.io.Serializable{
+@Table(name = "GAME")
+public class Game implements java.io.Serializable {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
 
-    @Column(name="title")
+    @Column(name = "title")
     private String title;
 
     @ManyToOne
-    @JoinColumn(name="category")
+    @JoinColumn(name = "category")
     private Category category;
 
-    @Column(name="price")
+    @Column(name = "price")
     private int price;
 
-    @Column(name="isAdult")
+    @Column(name = "isAdult")
     private boolean isAdult;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
 
-    @Column(name="url")
+    @Column(name = "url")
     private String url;
 
-    public Game(){
+    public Game() {
 
     }
 

@@ -43,7 +43,7 @@ public class Initialize {
 
 
         session.beginTransaction();
-        for (Game game: games){
+        for (Game game : games) {
             session.save(game);
         }
         session.getTransaction().commit();

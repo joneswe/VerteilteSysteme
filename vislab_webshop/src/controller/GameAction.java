@@ -21,24 +21,25 @@ public class GameAction extends ActionSupport implements SessionAware {
 
     private Map<String, Object> session;
 
-    public String execute(){
+    public String execute() {
         GameManager manager = new GameManager();
 
-        if("Löschen".equals(buttonName)){
+        if ("Löschen".equals(buttonName)) {
+            //delete game with the id of the game which was chosen in the droplist
             manager.deleteGameById(id);
             setGamesList(manager.getGamesList());
             addActionMessage(getText("admin.game_deleted"));
         }
 
-        if("Bearbeiten".equals(buttonName)){
+        if ("Bearbeiten".equals(buttonName)) {
+            //continue with GameEditAction
             return "edit";
         }
 
-        if("Hinzufügen".equals(buttonName)){
+        if ("Hinzufügen".equals(buttonName)) {
+            //continue with GameSaveAction
             return "add";
         }
-
-
 
 
         return "success";

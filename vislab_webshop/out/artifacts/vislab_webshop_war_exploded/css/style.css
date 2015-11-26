@@ -19,36 +19,36 @@ html, body {
     width: 450px;
 }
 
-#admin_categories select{
+#admin_categories select {
     width: 200px;
-    display:inline;
+    display: inline;
 }
 
-#admin_games select{
+#admin_games select {
     width: 200px;
-    display:inline;
+    display: inline;
 }
 
-#admin_categories input[type="submit"]{
+#admin_categories input[type="submit"] {
     margin-left: 10px;
 }
 
-#admin_games input[type="submit"]{
+#admin_games input[type="submit"] {
     margin-left: 10px;
 }
 
-#admin_categories > fieldset > div{
-    display:inline-block;
+#admin_categories > fieldset > div {
+    display: inline-block;
 }
 
-#admin_games > fieldset > div{
-    display:inline-block;
+#admin_games > fieldset > div {
+    display: inline-block;
 }
 
 .products {
     float: right;
     margin-left: 20px;
-    width:700px;
+    width: 700px;
 }
 
 #productSearch fieldset input[type="text"] {
@@ -59,10 +59,10 @@ html, body {
     width: 50px;
 }
 
-#admin_categories > fieldset > input[type="text"]:nth-child(4){
+#admin_categories > fieldset > input[type="text"]:nth-child(4) {
     margin-right: 5px;
 }
 
-#admin_games > fieldset > input[type="text"]:nth-child(4){
+#admin_games > fieldset > input[type="text"]:nth-child(4) {
     margin-right: 5px;
 }

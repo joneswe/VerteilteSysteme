@@ -11,8 +11,8 @@ public class DetailAction extends ActionSupport {
 
     public String execute() {
 
+        //set game by gameId to show the right game
         GameManager manager = new GameManager();
-
         game = manager.getGameById(gameId);
 
         return "success";

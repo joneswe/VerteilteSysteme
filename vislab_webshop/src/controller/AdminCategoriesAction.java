@@ -12,12 +12,13 @@ import java.util.Map;
 /**
  * Created by Tim on 17.11.2015.
  */
-public class AdminCategoriesAction extends ActionSupport implements SecureAction{
+public class AdminCategoriesAction extends ActionSupport implements SecureAction {
 
     private List<String> categoryList;
 
     public String execute() throws Exception {
 
+        //set categoryList to show it in admin_panel_categories.jsp
         CategoryManager categoryManager = new CategoryManager();
         setCategoryList(categoryManager.getCategoryList());
 

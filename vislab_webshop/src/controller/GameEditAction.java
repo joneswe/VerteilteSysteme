@@ -21,7 +21,7 @@ public class GameEditAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
 
 
-    public String execute(){
+    public String execute() {
 
         GameManager gameManager = new GameManager();
         game = gameManager.getGameById(id);
@@ -29,19 +29,21 @@ public class GameEditAction extends ActionSupport implements SessionAware {
         CategoryManager categoryManager = new CategoryManager();
         categoryList = categoryManager.getCategoryList();
 
+        //save id in session to access it later in editGame()
         session.put("id", id);
 
         return "success";
     }
 
-    public String editGame(){
+    public String editGame() {
 
         GameManager gameManager = new GameManager();
-        if(session.get("id") != null) {
+        //set id the same as the game that will be updated (in the case of saving, there's no id in the session)
+        if (session.get("id") != null) {
             game.setId(Integer.valueOf((String) session.get("id")));
             session.remove("id");
         }
-        gameManager.updateGame(game);
+        gameManager.saveOrUpdateGame(game);
 
         return "success";
     }

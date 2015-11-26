@@ -20,28 +20,38 @@ public class CategoryAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
 
 
-
     public String execute() throws Exception {
         CategoryManager categoryManager = new CategoryManager();
 
-        if("Hinzufügen".equals(buttonName)){
-            if(!(newCategoryName.isEmpty())) {
-                categoryManager.saveCategory(newCategoryName);
-                setCategoryList(categoryManager.getCategoryList());
+        //check, which button was pressed
+        if ("Hinzufügen".equals(buttonName)) {
+            //check, if input is empty
+            if (!(newCategoryName.isEmpty())) {
+                //check, if specified category already exists
+                if (categoryList.contains(newCategoryName)) {
+                    addActionError(getText("admin.category_exists"));
+                } else {
+                    //if all checks are passed, save new categoryName on database and refresh categoryList
+                    categoryManager.saveCategory(newCategoryName);
+                    setCategoryList(categoryManager.getCategoryList());
 
-                addActionMessage(getText("admin.category_saved"));
-
-            }else{
+                    addActionMessage(getText("admin.category_saved"));
+                }
+            } else {
                 addActionError(getText("admin.category_empty"));
             }
         }
-        if("Löschen".equals(buttonName)){
+
+        if ("Löschen".equals(buttonName)) {
+            //delete specified category
             categoryManager.deleteCategoryById(categoryName);
             setCategoryList(categoryManager.getCategoryList());
 
             addActionMessage(getText("admin.category_deleted"));
         }
+
         if ("Bearbeiten".equals(buttonName)) {
+            //go to next action CategoryEditAction
             return "edit";
         }
 

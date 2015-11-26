@@ -15,14 +15,14 @@ public class CategoryPostAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
 
 
-    public String execute(){
+    public String execute() {
+        //grab specified category and new name from session to update it
         categoryName = (String) session.get("cat");
         newCategoryName = (String) session.get("newCat");
 
         CategoryManager categoryManager = new CategoryManager();
 
         categoryManager.updateCategory(this.categoryName, this.newCategoryName);
-
 
         return "success";
     }

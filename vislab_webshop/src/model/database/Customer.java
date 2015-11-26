@@ -10,23 +10,23 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="CUSTOMER")
+@Table(name = "CUSTOMER")
 public class Customer implements java.io.Serializable {
 
     @Id
-    @Column(name="username", nullable=false)
+    @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name="firstname")
+    @Column(name = "firstname")
     private String firstname;
 
-    @Column(name="lastname")
+    @Column(name = "lastname")
     private String lastname;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name="isAdmin")
+    @Column(name = "isAdmin")
     private boolean isAdmin;
 
     public Customer() {

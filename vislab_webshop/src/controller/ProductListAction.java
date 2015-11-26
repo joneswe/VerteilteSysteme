@@ -24,17 +24,19 @@ public class ProductListAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
 
     public String execute() throws Exception {
+        //get category list from categories on database to show in droplist
         CategoryManager categoryManager = new CategoryManager();
         setCategoryList(categoryManager.getCategoryList());
 
+        //get game list from games on database to show all games available
         GameManager gameManager = new GameManager();
         setGamesList(gameManager.getGamesList());
 
-        Customer customer = ((Customer)session.get("user"));
+        //get user from current session to show welcome text
+        Customer customer = ((Customer) session.get("user"));
         firstname = customer.getFirstname();
         lastname = customer.getLastname();
         isAdmin = customer.isAdmin();
-
 
         return SUCCESS;
     }

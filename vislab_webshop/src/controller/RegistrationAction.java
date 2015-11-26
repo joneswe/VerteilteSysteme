@@ -24,10 +24,12 @@ public class RegistrationAction extends ActionSupport implements SessionAware {
         CustomerManager customerManager = new CustomerManager();
         Customer customer = customerManager.getCustomerByPrimaryKey(getUsername());
 
+        //if customer != null, this username already exists
         if (customer != null) {
             addActionError(getText("error.register.username_exists"));
             return "input";
         } else {
+            //create new user, save him in database and put him in current session
             customer = new Customer();
             customer.setUsername(getUsername());
             customer.setFirstname(getFirstname());

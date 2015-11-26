@@ -15,6 +15,7 @@ public class AdminGamesAction {
 
     public String execute() throws Exception {
 
+        //set gamesList to show it in admin_panel_games.jsp
         GameManager gameManager = new GameManager();
         gamesList = gameManager.getGamesList();
         return "success";

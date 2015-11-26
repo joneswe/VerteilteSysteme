@@ -32,9 +32,10 @@ public class ProductListSearchAction extends ActionSupport implements SessionAwa
 
     public String execute() throws Exception {
 
-        if(categoryFilter == null && textSearch == null && isAdult == false && priceMin == 0 && priceMax == 0) {
+        //if nothing specified, nothing happens when using search
+        if (categoryFilter == null && textSearch == null && isAdult == false && priceMin == 0 && priceMax == 0) {
             return "input";
-        }else{
+        } else {
             filterList();
             return "success";
         }
@@ -43,7 +44,7 @@ public class ProductListSearchAction extends ActionSupport implements SessionAwa
 
     @Override
     public void validate() {
-        Customer customer = ((Customer)session.get("user"));
+        Customer customer = ((Customer) session.get("user"));
         firstname = customer.getFirstname();
         lastname = customer.getLastname();
         isAdmin = customer.isAdmin();

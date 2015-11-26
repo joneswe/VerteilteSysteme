@@ -9,12 +9,12 @@ import javax.persistence.Table;
  * Created by Tim on 16.11.2015.
  */
 @Entity
-@Table(name="CATEGORY")
-public class Category implements java.io.Serializable  {
+@Table(name = "CATEGORY")
+public class Category implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name="name", nullable=false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     public Category() {
