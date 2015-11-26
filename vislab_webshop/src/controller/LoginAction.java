@@ -27,12 +27,12 @@ public class LoginAction extends ActionSupport implements SessionAware {
         CustomerManager customerManager = new CustomerManager();
         Customer customer = customerManager.getCustomerByPrimaryKey(getUsername());
 
-        //check, if user is registrated
+        //check, if user is registered
         if (customer == null) {
             addActionError(getText("error.username.register"));
             return "input";
         } else {
-            //if user is registrated, compare input with password in database and put user in current session
+            //if user is registered, compare input with password in database and put user in current session
             if (customer.getPassword().equals(getPassword())) {
                 setFirstname(customer.getFirstname());
                 setLastname(customer.getLastname());
