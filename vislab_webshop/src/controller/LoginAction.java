@@ -37,7 +37,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
                 setFirstname(customer.getFirstname());
                 setLastname(customer.getLastname());
                 session.put("user", customer);
-                return "success";
+                return SUCCESS;
             } else {
                 addActionError(getText("error.user.passwordforgotten"));
                 return "input";
