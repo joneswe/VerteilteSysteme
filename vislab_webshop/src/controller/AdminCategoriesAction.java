@@ -1,7 +1,6 @@
 package controller;
 
 import com.opensymphony.xwork2.ActionSupport;
-import interceptor.SecureAction;
 import model.businesslogic.CategoryManager;
 import model.businesslogic.GameManager;
 import model.database.Game;
@@ -9,10 +8,8 @@ import model.database.Game;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Tim on 17.11.2015.
- */
-public class AdminCategoriesAction extends ActionSupport implements SecureAction {
+
+public class AdminCategoriesAction extends ActionSupport {
 
     private List<String> categoryList;
 
@@ -33,8 +30,4 @@ public class AdminCategoriesAction extends ActionSupport implements SecureAction
         this.categoryList = categoryList;
     }
 
-    @Override
-    public String requiresRole() {
-        return "admin";
-    }
 }

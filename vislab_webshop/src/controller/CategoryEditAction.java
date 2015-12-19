@@ -6,9 +6,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
-/**
- * Created by Tim on 17.11.2015.
- */
+
 public class CategoryEditAction extends ActionSupport implements SessionAware {
 
     String categoryName;

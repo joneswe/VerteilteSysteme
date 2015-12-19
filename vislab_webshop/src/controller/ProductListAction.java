@@ -10,9 +10,6 @@ import org.apache.struts2.interceptor.SessionAware;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Tim on 15.11.2015.
- */
 public class ProductListAction extends ActionSupport implements SessionAware {
 
     private Map<Integer, Game> gamesList;

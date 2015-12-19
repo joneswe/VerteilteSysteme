@@ -9,9 +9,6 @@ import org.hibernate.Session;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Tim on 13.11.2015.
- */
 public class Initialize {
 
     public static void main(String[] args) {

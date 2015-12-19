@@ -6,9 +6,7 @@ import model.database.Game;
 
 import java.util.Map;
 
-/**
- * Created by Tim on 18.11.2015.
- */
+
 public class AdminGamesAction {
 
     private Map<Integer, Game> gamesList;

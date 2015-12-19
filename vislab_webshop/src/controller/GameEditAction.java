@@ -9,9 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Tim on 18.11.2015.
- */
+
 public class GameEditAction extends ActionSupport implements SessionAware {
     private String id;
     private Game game;

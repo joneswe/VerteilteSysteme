@@ -1,10 +1,11 @@
 package model.database;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
-/**
- * Created by Tim on 14.11.2015.
- */
+
 @Entity
 @Table(name = "GAME")
 public class Game implements java.io.Serializable {
@@ -18,6 +19,8 @@ public class Game implements java.io.Serializable {
     private String title;
 
     @ManyToOne
+    @OnDelete(action= OnDeleteAction.CASCADE)
+    //add manually to data base schema ON DELETE CASCADE
     @JoinColumn(name = "category")
     private Category category;
 

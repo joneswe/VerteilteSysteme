@@ -7,9 +7,6 @@ import org.hibernate.Session;
 
 import java.util.*;
 
-/**
- * Created by Tim on 15.11.2015.
- */
 public class GameManager {
 
     public Map<Integer, Game> getGamesList() {

@@ -8,9 +8,6 @@ import org.hibernate.Session;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Tim on 16.11.2015.
- */
 public class CategoryManager {
 
     public List<String> getCategoryList() {

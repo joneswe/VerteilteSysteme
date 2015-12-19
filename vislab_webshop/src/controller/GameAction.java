@@ -9,9 +9,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import java.awt.*;
 import java.util.*;
 
-/**
- * Created by Tim on 18.11.2015.
- */
+
 public class GameAction extends ActionSupport implements SessionAware {
 
     private Game game;

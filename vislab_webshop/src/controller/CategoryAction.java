@@ -7,9 +7,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Tim on 17.11.2015.
- */
+
 public class CategoryAction extends ActionSupport implements SessionAware {
 
     private List<String> categoryList;

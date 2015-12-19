@@ -5,9 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * Created by Tim on 13.11.2015.
- */
 
 @Entity
 @Table(name = "CUSTOMER")

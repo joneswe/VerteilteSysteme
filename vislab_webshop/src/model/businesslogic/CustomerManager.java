@@ -6,10 +6,6 @@ import org.hibernate.Session;
 import model.util.HibernateUtil;
 
 
-/**
- * Created by Tim on 13.11.2015.
- */
-
 public class CustomerManager {
 
     public Customer getCustomerByPrimaryKey(String primaryKey) {

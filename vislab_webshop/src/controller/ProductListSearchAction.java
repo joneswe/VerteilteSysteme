@@ -12,9 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Tim on 16.11.2015.
- */
 public class ProductListSearchAction extends ActionSupport implements SessionAware {
 
     private int priceMin = 0;
@@ -62,7 +59,7 @@ public class ProductListSearchAction extends ActionSupport implements SessionAwa
     private void filterList() {
         Map<Integer, Game> tmpMap = new HashMap<>();
 
-        if (this.textSearch == null) {
+        if (this.textSearch != null) {
             for (Map.Entry<Integer, Game> entry : getGamesList().entrySet()) {
                 if (entry.getValue().getTitle().toLowerCase().contains(this.textSearch)) {
                     tmpMap.put(entry.getKey(), entry.getValue());

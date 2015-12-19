@@ -7,9 +7,6 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
-/**
- * Created by Tim on 13.11.2015.
- */
 
 
 public class LoginAction extends ActionSupport implements SessionAware {
